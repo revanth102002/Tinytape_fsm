@@ -183,7 +183,7 @@ module timer (
     reg [25:0] count;
 
     always @(posedge clk) begin
-	 if (reset) begin
+	    if (!reset) begin
             count <= 26'd0;
             sec_timer <= 5'd0;
         end else begin
