@@ -63,7 +63,7 @@ parameter yellow = 2'b01;
 	always @(posedge clk or negedge reset) begin
 		 if (!reset) begin
             state <= RST;
-        end else begin
+		 end else if(ena) begin
                 state <= nextstate;
 					  end
     end
