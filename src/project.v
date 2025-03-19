@@ -16,15 +16,15 @@ module tt_um_example (
     input  wire       rst_n     // reset_n - low to reset
 );
 
-
+	traffic u1(.clk(clk),.reset(rst_n),.north([7:6]ui_out),.east([5:4]ui_out),.south([3:2]ui_out),.west([1:0]ui_out));
 
   // All output pins must be assigned. If not used, assign to 0.
-  assign uo_out  = ui_in + uio_in;  // Example: ou_out is the sum of ui_in and uio_in
-  assign uio_out = 0;
+ // assign uo_out  = ui_in + uio_in;  // Example: ou_out is the sum of ui_in and uio_in
+ // assign uio_out = 0;
   assign uio_oe  = 0;
 
   // List all unused inputs to prevent warnings
-  wire _unused = &{ena, clk, rst_n, 1'b0};
+	wire _unused = &{ena,ui_in,uio_in, 1'b0};
 
 endmodule
 
@@ -54,9 +54,9 @@ parameter yellow = 2'b01;
 	 reg [3:0] state;
     reg [3:0] nextstate; 
 	wire [4:0]sec_timer;
-	timer sec_time(.clk(clk),.reset(reset),.sec_timer(sec_timer));
+	timer sec_time(.clk(clk),.reset(!reset),.sec_timer(sec_timer));
 	 always @(posedge clk or posedge reset) begin
-        if (reset) begin
+		 if (!reset) begin
             state <= RST;
         end else begin
                 state <= nextstate;
