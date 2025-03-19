@@ -55,7 +55,7 @@ parameter yellow = 2'b01;
     reg [3:0] nextstate; 
 	wire [4:0]sec_timer;
 	timer sec_time(.clk(clk),.reset(!reset),.sec_timer(sec_timer));
-	 always @(posedge clk or posedge reset) begin
+	always @(posedge clk or negedge reset) begin
 		 if (!reset) begin
             state <= RST;
         end else begin
