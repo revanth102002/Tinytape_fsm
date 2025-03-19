@@ -15,8 +15,13 @@ module tt_um_fsm (
     input  wire       clk,      // clock
     input  wire       rst_n     // reset_n - low to reset
 );
+	wire [1:0] north;
+	wire [1:0]east;
+	wire [1:0]south;
+	wire [1:0]west;
 
-	traffic u1(.clk(clk),.reset(rst_n),.north(uo_out[7:6]),.east(uo_out[5:4]),.south(uo_out[3:2]),.west(uo_out[1:0]));
+	traffic u1(.clk(clk),.reset(rst_n),.north(north),.east(east),.south(south),.west(west));
+	assign uo_out={north,east,south,west}
 
   // All output pins must be assigned. If not used, assign to 0.
  // assign uo_out  = ui_in + uio_in;  // Example: ou_out is the sum of ui_in and uio_in
