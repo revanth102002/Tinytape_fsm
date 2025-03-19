@@ -29,7 +29,7 @@ module tt_um_fsm (
   assign uio_oe  = 0;
 
   // List all unused inputs to prevent warnings
-	wire _unused = &{ena,ui_in,uio_in, 1'b0};
+	wire _unused = &{ui_in,uio_in, 1'b0};
 
 endmodule
 
@@ -63,7 +63,7 @@ parameter yellow = 2'b01;
 	always @(posedge clk or negedge reset) begin
 		 if (!reset) begin
             state <= RST;
-		 end else if(ena) begin
+		 end else begin
                 state <= nextstate;
 					  end
     end
