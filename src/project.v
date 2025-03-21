@@ -113,7 +113,7 @@ module traffic(
                 east = red;
                 south = red;
                 west = red;
-                if(sec_timer == 5'd5)
+		    if(sec_timer == 5'd1)
                     nextstate = s1;
             end
             s1: begin
@@ -121,7 +121,7 @@ module traffic(
                 east = yellow;
                 south = red;
                 west = red;
-                if(sec_timer == 5'd6)
+		    if(sec_timer == 5'd2)
                     nextstate = s2;
             end
             s2: begin
